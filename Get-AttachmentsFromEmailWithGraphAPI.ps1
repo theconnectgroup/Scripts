@@ -77,12 +77,12 @@ Get-AttachmentsFromEmailWithGraphApi -ClientAppId "3396ff7b-ee07-4257-b70c-8e1bf
     if(!(Test-Path $Output))
         {
             New-Item -ItemType Directory -Path $output -Force
-            foreach($content in $filearray)
-                {
-                    $B64 = $($Content).Bytes
-                    $Name = $($content).Name
-                    $bytes = [Convert]::FromBase64String($B64)
-                    [IO.File]::WriteAllBytes("$output\$Name", $bytes)
-                }
         }
+    foreach($content in $filearray)
+            {
+                $B64 = $($Content).Bytes
+                $Name = $($content).Name
+                $bytes = [Convert]::FromBase64String($B64)
+                [IO.File]::WriteAllBytes("$output\$Name", $bytes)
+            }
 }
